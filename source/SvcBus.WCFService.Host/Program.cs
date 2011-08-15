@@ -1,4 +1,5 @@
 ﻿using System;
+using SvcBus.WCFService.Services;
 using Topshelf;
 
 namespace SvcBus.WCFService.Host {

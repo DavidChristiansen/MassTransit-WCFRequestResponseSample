@@ -1,16 +1,12 @@
-﻿using System;
-using System.Reflection;
+using System;
 using System.ServiceModel;
 using System.Threading;
-using SvcBus.WCFClient.SampleServiceReference;
+using SvcBus.WCFClient.WebSampleServiceReference;
 
 namespace SvcBus.WCFClient.Infrastructure.Proxies {
-	/// <summary>
-	/// TODO: Update summary.
-	/// </summary>
-	public class SampleServiceProxy : ServiceProxyBase, ISampleServiceProxy {
+	public class WebSampleServiceProxy : ServiceProxyBase, ISampleServiceProxy {
 		public string Ask(string question) {
-			SampleServiceReference.SampleServiceClient proxy = null;
+			SampleServiceClient proxy = null;
 			string response = null;
 			int callCount = 0;
 			bool callCompleted = false;
@@ -18,9 +14,9 @@ namespace SvcBus.WCFClient.Infrastructure.Proxies {
 			while (!callCompleted && callCount < MaxRetryCount && shouldRetry) {
 				callCount++;
 				try {
-					proxy = new SampleServiceReference.SampleServiceClient();
-					var svcResponse = proxy.AskQuestion(new SampleServiceRequest() {
-						Question = question
+					proxy = new SampleServiceClient();
+					var svcResponse = proxy.AskQuestion(new SampleServiceRequest {
+						Question = "Are we nearly there yet?"
 					});
 					if (svcResponse != null)
 						response = svcResponse.Answer;
@@ -52,13 +48,5 @@ namespace SvcBus.WCFClient.Infrastructure.Proxies {
 			}
 			return response;
 		}
-	}
-
-	public interface ISampleServiceProxy {
-		string Ask(string question);
-	}
-
-	public class ServiceProxyBase {
-		internal int MaxRetryCount = 3;
 	}
 }

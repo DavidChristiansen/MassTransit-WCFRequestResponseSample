@@ -9,7 +9,8 @@ namespace SvcBus.WCFClient {
 	class Program {
 		private static ISampleServiceProxy svcProxy;
 		static void Main(string[] args) {
-			svcProxy = new SampleServiceProxy();
+			//svcProxy = new SampleServiceProxy();
+			svcProxy = new WebSampleServiceProxy();
 			for (int i = 0; i < 10; i++) {
 				var question = "Are we there yet?";
 				var answer = svcProxy.Ask(question);

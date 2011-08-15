@@ -1,11 +1,7 @@
-﻿using System;
-using System.ServiceModel;
-using Magnum.Extensions;
-using MassTransit;
-using SvcBus.SampleService.Messages;
+﻿using System.ServiceModel;
 using SvcBus.WCFService.Contracts;
 
-namespace SvcBus.WCFService.Host {
+namespace SvcBus.WCFService.Services {
 	[ServiceBehavior(IncludeExceptionDetailInFaults = true, Namespace = Constants.Namespace)]
 	public class SampleService : ISampleService {
 		public SampleServiceResponse AskQuestion(SampleServiceRequest request) {

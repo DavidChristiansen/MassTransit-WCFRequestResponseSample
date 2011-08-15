@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.dccreative.co.uk/examples/masstransit" elementFormDefault="qualified" targetNamespace="http://schemas.dccreative.co.uk/examples/masstransit" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AskQuestion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="tns:SampleServiceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SampleServiceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Question" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SampleServiceRequest" nillable="true" type="tns:SampleServiceRequest" />
+  <xs:element name="AskQuestionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AskQuestionResult" nillable="true" type="tns:SampleServiceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SampleServiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Answer" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SampleServiceResponse" nillable="true" type="tns:SampleServiceResponse" />
+</xs:schema>
